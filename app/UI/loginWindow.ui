@@ -48,7 +48,7 @@
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">image: url(:/newPrefix/logo.png);</string>
+    <string notr="true">image: url(:/logo/logo.png);</string>
    </property>
    <property name="text">
     <string/>
@@ -104,6 +104,9 @@
    <property name="frame">
     <bool>true</bool>
    </property>
+   <property name="echoMode">
+    <enum>QLineEdit::EchoMode::Normal</enum>
+   </property>
    <property name="dragEnabled">
     <bool>false</bool>
    </property>
@@ -134,6 +137,9 @@
    </property>
    <property name="styleSheet">
     <string notr="true">background-color: rgb(43, 54, 44);</string>
+   </property>
+   <property name="echoMode">
+    <enum>QLineEdit::EchoMode::Password</enum>
    </property>
    <property name="placeholderText">
     <string>password</string>

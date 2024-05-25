@@ -1,10 +1,10 @@
 import re
 import sys
-import csv
 from PyQt6.QtGui import QGuiApplication
 from PyQt6.QtWidgets import QMainWindow, QApplication
 
 from UI.UiSingUpWindow import Ui_SingUpWindow
+from models.userModel import UserModel  # Относительный импорт
 
 
 class SingupWindow(QMainWindow, Ui_SingUpWindow):
@@ -14,6 +14,8 @@ class SingupWindow(QMainWindow, Ui_SingUpWindow):
         self.setupUi(self)
         self.move_center()
 
+        self.user_model = UserModel('../dataBases/users_info.json')
+
         self.passwordIsValid = False
         self.repeatedPassword = False
         self.emailIsValid = False
@@ -21,8 +23,8 @@ class SingupWindow(QMainWindow, Ui_SingUpWindow):
         self.passwordTextEdit1.textChanged.connect(self.validate_password)
         self.passwordTextEdit2.textChanged.connect(self.match_password)
 
-        # self.backButton.clicked.connect(self.back_button_clicked)
         self.signupButton.clicked.connect(self.singup_button_clicked)
+        self.backButton.clicked.connect(self.back_button_clicked)
 
     def move_center(self):
         primary_screen = QGuiApplication.primaryScreen()
@@ -67,30 +69,26 @@ class SingupWindow(QMainWindow, Ui_SingUpWindow):
             self.passwordTextEdit2.setStyleSheet("color: #FA8072;")
             self.repeatedPassword = False
 
-    # def back_button_clicked(self):
-    #     self.signupButton
-
     def singup_button_clicked(self):
         if (self.passwordIsValid and self.repeatedPassword and
                 self.emailIsValid and self.nameTextEdit.text()):
             print("Niceeee")
-            self.add_user()
+            if self.user_model.add_user(self.emailTextEdit.text(), self.passwordTextEdit1.text(), self.nameTextEdit.text()):
+                print("Пользователь успешно зарегистрирован")
+            else:
+                print("У вас уже есть аккаунт с этим email")
         else:
             print("looser")
 
-    def add_user(self):
-        with open('../dataBases/users_info.csv', newline='', encoding='utf-8-sig') as csvfile:
-            reader = csv.reader(csvfile, delimiter=';')
-            user_exist = False
-            lastrow = 0
-            if reader is not None:
-                for row in reader:
-                    if row[0] == self.emailTextEdit.text():
-                        user_exist = True
-                    lastrow = row.index()
+    def back_button_clicked(self):
+        from application.loginWindow import LoginWindow  # Отложенный импорт
+        self.main_window = LoginWindow()
+        self.main_window.show()
+        self.close()
 
-            if user_exist:
-                print("U have an account with that email")
-            else:
-                writer = csv.writer(csvfile, delimiter=';')
-                writer.writerow(lastrow+1)
+
+if __name__ == "__main__":
+    app = QApplication(sys.argv)
+    ex = SingupWindow()
+    ex.show()
+    sys.exit(app.exec())

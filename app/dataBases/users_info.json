@@ -1,0 +1,16 @@
+[
+    {
+        "email": "nastaytalmazan@gmail.com",
+        "password": "admin",
+        "isAdmin": "1",
+        "place": "",
+        "name": "Anastasiia"
+    },
+    {
+        "email": "joubran.alboni2@gmail.com",
+        "password": "admin",
+        "isAdmin": "1",
+        "place": "",
+        "name": "Jourban"
+    }
+]

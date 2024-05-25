@@ -5,7 +5,6 @@ from PyQt6.QtWidgets import QMainWindow, QApplication
 
 from adminWindow import AdminWindow
 from UI.UiLoginWindow import Ui_Login
-from singupWindow import SingupWindow
 
 
 def valid_user(login, password):
@@ -28,9 +27,6 @@ class LoginWindow(QMainWindow, Ui_Login):
 
         self.move_center()
 
-        self.passwordIsValid = False
-        self.loginIsValid = False
-
         self.loginButton.clicked.connect(self.login_button_clicked)
         self.signupButton.clicked.connect(self.singup_button_clicked)
 
@@ -42,30 +38,32 @@ class LoginWindow(QMainWindow, Ui_Login):
         y = (screen_geometry.height() - window_geometry.height()) // 2
         self.move(x, y)
 
-
     def login_button_clicked(self):
-        if self.loginIsValid and self.passwordIsValid:
-            user_login = self.loginTextEdit.text()
-            user_password = self.passwordTextEdit.text()
-            is_validUser = valid_user(user_login, user_password)[0]
-            is_admin = valid_user(user_login, user_password)[1]
-            if is_validUser:
-                if is_admin:
-                    self.main_window = AdminWindow()
-                    self.main_window.show()
-                    self.close()
-                else:
-                    pass
+        user_login = self.loginTextEdit.text()
+        user_password = self.passwordTextEdit.text()
+        is_validUser, is_admin = valid_user(user_login, user_password)
+        if is_validUser:
+            if is_admin:
+                self.main_window = AdminWindow()
+                self.main_window.show()
+                self.close()
             else:
-                pass
+                from userWindow import UserWindow  # Отложенный импорт для пользовательского окна
+                self.main_window = UserWindow()
+                self.main_window.show()
+                self.close()
+        else:
+            print("Invalid login credentials")
 
     def singup_button_clicked(self):
+        from singupWindow import SingupWindow  # Отложенный импорт для окна регистрации
         self.main_window = SingupWindow()
         self.main_window.show()
         self.close()
 
 
-app = QApplication(sys.argv)
-ex = LoginWindow()
-ex.show()
-sys.exit(app.exec())
+if __name__ == "__main__":
+    app = QApplication(sys.argv)
+    ex = LoginWindow()
+    ex.show()
+    sys.exit(app.exec())

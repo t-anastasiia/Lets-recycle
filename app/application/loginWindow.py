@@ -1,29 +1,24 @@
 import sys
-import csv
 from PyQt6.QtGui import QGuiApplication
 from PyQt6.QtWidgets import QMainWindow, QApplication
 
 from adminWindow import AdminWindow
 from UI.UiLoginWindow import Ui_Login
+from models.userModel import UserModel  # Относительный импорт
 
-
-def valid_user(login, password):
-    with open('../dataBases/users_info.csv', newline='', encoding='utf-8-sig') as csvfile:
-        reader = csv.reader(csvfile, delimiter=';')
-        if reader is not None:
-            for row in reader:
-                if row[0] == login and row[1] == password and row[2] == '1':
-                    return [True, True]
-                elif row[0] == login and row[1] == password:
-                    return [True, False]
-            return [False, False]
-
+def valid_user(user_model, login, password):
+    for user in user_model.users:
+        if user['email'] == login and user['password'] == password:
+            return [True, user['isAdmin'] == '1']
+    return [False, False]
 
 class LoginWindow(QMainWindow, Ui_Login):
     def __init__(self):
         super().__init__()
         self.main_window = None
         self.setupUi(self)
+
+        self.user_model = UserModel('../dataBases/users_info.json')
 
         self.move_center()
 
@@ -41,7 +36,7 @@ class LoginWindow(QMainWindow, Ui_Login):
     def login_button_clicked(self):
         user_login = self.loginTextEdit.text()
         user_password = self.passwordTextEdit.text()
-        is_validUser, is_admin = valid_user(user_login, user_password)
+        is_validUser, is_admin = valid_user(self.user_model, user_login, user_password)
         if is_validUser:
             if is_admin:
                 self.main_window = AdminWindow()

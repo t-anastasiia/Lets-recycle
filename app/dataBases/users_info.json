@@ -1,4 +1,4 @@
-[
+﻿[
     {
         "email": "nastaytalmazan@gmail.com",
         "password": "admin",
@@ -12,5 +12,19 @@
         "isAdmin": "1",
         "place": "",
         "name": "Jourban"
+    },
+    {
+        "email": "user@gmail.com",
+        "password": "user",
+        "isAdmin": "0",
+        "place": "",
+        "name": "User"
+    },
+    {
+        "email": "proverka@gmail.com",
+        "password": "proverka",
+        "isAdmin": "0",
+        "place": "",
+        "name": "Proverka"
     }
 ]

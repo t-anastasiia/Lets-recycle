@@ -78,7 +78,7 @@ class SingupWindow(QMainWindow, Ui_SingUpWindow):
             print("looser")
 
     def add_user(self):
-        with open('../Data/users_info.csv', newline='', encoding='utf-8-sig') as csvfile:
+        with open('../Data/User/users_info.csv', newline='', encoding='utf-8-sig') as csvfile:
             reader = csv.reader(csvfile, delimiter=';')
             user_exist = False
             lastrow = 0

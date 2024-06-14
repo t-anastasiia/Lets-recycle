@@ -9,7 +9,7 @@ from singupWindow import SingupWindow
 
 
 def valid_user(login, password):
-    with open('../Data/users_info.csv', newline='', encoding='utf-8-sig') as csvfile:
+    with open('../Data/User/users_info.csv', newline='', encoding='utf-8-sig') as csvfile:
         reader = csv.reader(csvfile, delimiter=';')
         if reader is not None:
             for row in reader:
@@ -41,7 +41,6 @@ class LoginWindow(QMainWindow, Ui_Login):
         x = (screen_geometry.width() - window_geometry.width()) // 2
         y = (screen_geometry.height() - window_geometry.height()) // 2
         self.move(x, y)
-
 
     def login_button_clicked(self):
         if self.loginIsValid and self.passwordIsValid:

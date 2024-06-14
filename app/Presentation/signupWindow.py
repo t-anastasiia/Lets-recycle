@@ -1,10 +1,10 @@
 import re
-import csv
+import sqlite3
 from PyQt6.QtGui import QGuiApplication
-from PyQt6.QtWidgets import QMainWindow
+from PyQt6.QtWidgets import QMainWindow, QMessageBox
 
 from Presentation.UI.UiSingUpWindow import Ui_SingUpWindow
-
+from Domain.Entities.User.UserInfo import User
 
 class SignupWindow(QMainWindow, Ui_SingUpWindow):
     def __init__(self):
@@ -20,8 +20,7 @@ class SignupWindow(QMainWindow, Ui_SingUpWindow):
         self.passwordTextEdit1.textChanged.connect(self.validate_password)
         self.passwordTextEdit2.textChanged.connect(self.match_password)
 
-        # self.backButton.clicked.connect(self.back_button_clicked)
-        self.signupButton.clicked.connect(self.singup_button_clicked)
+        self.signupButton.clicked.connect(self.signup_button_clicked)
 
     def move_center(self):
         primary_screen = QGuiApplication.primaryScreen()
@@ -66,30 +65,31 @@ class SignupWindow(QMainWindow, Ui_SingUpWindow):
             self.passwordTextEdit2.setStyleSheet("color: #FA8072;")
             self.repeatedPassword = False
 
-    # def back_button_clicked(self):
-    #     self.signupButton
-
-    def singup_button_clicked(self):
-        if (self.passwordIsValid and self.repeatedPassword and
-                self.emailIsValid and self.nameTextEdit.text()):
-            print("Niceeee")
+    def signup_button_clicked(self):
+        if self.passwordIsValid and self.repeatedPassword and self.emailIsValid and self.nameTextEdit.text():
             self.add_user()
         else:
-            print("looser")
+            QMessageBox.warning(self, "Signup Failed", "Please fill in all fields correctly.")
 
     def add_user(self):
-        with open('../Data/User/users_info.csv', newline='', encoding='utf-8-sig') as csvfile:
-            reader = csv.reader(csvfile, delimiter=';')
-            user_exist = False
-            lastrow = 0
-            if reader is not None:
-                for row in reader:
-                    if row[0] == self.emailTextEdit.text():
-                        user_exist = True
-                    lastrow = row.index()
+        user_email = self.emailTextEdit.text()
+        user_password = self.passwordTextEdit1.text()
+        user_name = self.nameTextEdit.text()
 
-            if user_exist:
-                print("U have an account with that email")
-            else:
-                writer = csv.writer(csvfile, delimiter=';')
-                writer.writerow(lastrow+1)
+        conn = sqlite3.connect('../Data/User/Users.db')
+        cursor = conn.cursor()
+
+        # Проверка существования пользователя
+        cursor.execute("SELECT * FROM users WHERE email=?", (user_email,))
+        if cursor.fetchone():
+            QMessageBox.warning(self, "Signup Failed", "User with this email already exists.")
+            conn.close()
+            return
+
+        # Вставка нового пользователя
+        cursor.execute("INSERT INTO users (email, password, status, name) VALUES (?, ?, 0, ?)", (user_email, user_password, user_name))
+        conn.commit()
+        conn.close()
+
+        QMessageBox.information(self, "Signup Successful", "You have successfully signed up!")
+        self.close()

@@ -1,6 +1,9 @@
 import sys
 from PyQt6.QtWidgets import QApplication, QMainWindow
 from Presentation.UI.User.UiUserMainWindow import Ui_MainWindow
+from Presentation.User.userAboutWindow import UserAboutWindow
+from Presentation.User.userLocationsWindow import UserLocationsWindow
+from Presentation.User.userRequestWindow import UserRequestWindow
 
 class UserMainWindow(QMainWindow, Ui_MainWindow):
     def __init__(self):
@@ -16,15 +19,19 @@ class UserMainWindow(QMainWindow, Ui_MainWindow):
 
     def about_recycling(self):
         # Логика для кнопки "About Recycling"
-        self.aboutText.setVisible(not self.aboutText.isVisible())
+        self.about_window = UserAboutWindow()
+        self.about_window.show()
+        self.close()
 
     def show_locations(self):
-        # Логика для кнопки "Locations"
-        self.locationsText.setVisible(not self.locationsText.isVisible())
+        self.locations_window = UserLocationsWindow()
+        self.locations_window.show()
+        self.close()
 
     def show_requests(self):
-        # Логика для кнопки "Requests"
-        self.requestsText.setVisible(not self.requestsText.isVisible())
+        self.request_window = UserRequestWindow()
+        self.request_window.show()
+        self.close()
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)

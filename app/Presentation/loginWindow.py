@@ -1,24 +1,21 @@
 import sys
-import csv
+import sqlite3
 from PyQt6.QtGui import QGuiApplication
 from PyQt6.QtWidgets import QMainWindow, QApplication
 
 from Presentation.adminWindow import AdminWindow
 from Presentation.UI.UiLoginWindow import Ui_Login
-from singupWindow import SingupWindow
-
+from Presentation.signupWindow import SignupWindow
 
 def valid_user(login, password):
-    with open('../Data/User/users_info.csv', newline='', encoding='utf-8-sig') as csvfile:
-        reader = csv.reader(csvfile, delimiter=';')
-        if reader is not None:
-            for row in reader:
-                if row[0] == login and row[1] == password and row[2] == '1':
-                    return [True, True]
-                elif row[0] == login and row[1] == password:
-                    return [True, False]
-            return [False, False]
-
+    conn = sqlite3.connect('app/Data/User/Users.db')
+    cursor = conn.cursor()
+    cursor.execute("SELECT email, password, status FROM users WHERE email=? AND password=?", (login, password))
+    user = cursor.fetchone()
+    conn.close()
+    if user:
+        return [True, user[2] == 1]
+    return [False, False]
 
 class LoginWindow(QMainWindow, Ui_Login):
     def __init__(self):
@@ -32,7 +29,7 @@ class LoginWindow(QMainWindow, Ui_Login):
         self.loginIsValid = False
 
         self.loginButton.clicked.connect(self.login_button_clicked)
-        self.signupButton.clicked.connect(self.singup_button_clicked)
+        self.signupButton.clicked.connect(self.signup_button_clicked)
 
     def move_center(self):
         primary_screen = QGuiApplication.primaryScreen()
@@ -43,28 +40,22 @@ class LoginWindow(QMainWindow, Ui_Login):
         self.move(x, y)
 
     def login_button_clicked(self):
-        if self.loginIsValid and self.passwordIsValid:
-            user_login = self.loginTextEdit.text()
-            user_password = self.passwordTextEdit.text()
-            is_validUser = valid_user(user_login, user_password)[0]
-            is_admin = valid_user(user_login, user_password)[1]
-            if is_validUser:
-                if is_admin:
-                    self.main_window = AdminWindow()
-                    self.main_window.show()
-                    self.close()
-                else:
-                    pass
+        user_login = self.loginTextEdit.text()
+        user_password = self.passwordTextEdit.text()
+        is_validUser, is_admin = valid_user(user_login, user_password)
+        if is_validUser:
+            if is_admin:
+                self.main_window = AdminWindow()
+                self.main_window.show()
+                self.close()
             else:
+                # Добавьте логику для обычного пользователя, если требуется
                 pass
+        else:
+            # Добавьте логику обработки неверного логина, если требуется
+            pass
 
-    def singup_button_clicked(self):
-        self.main_window = SingupWindow()
+    def signup_button_clicked(self):
+        self.main_window = SignupWindow()
         self.main_window.show()
         self.close()
-
-
-app = QApplication(sys.argv)
-ex = LoginWindow()
-ex.show()
-sys.exit(app.exec())

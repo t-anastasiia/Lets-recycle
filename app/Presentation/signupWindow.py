@@ -6,7 +6,7 @@ from PyQt6.QtWidgets import QMainWindow
 from Presentation.UI.UiSingUpWindow import Ui_SingUpWindow
 
 
-class SingupWindow(QMainWindow, Ui_SingUpWindow):
+class SignupWindow(QMainWindow, Ui_SingUpWindow):
     def __init__(self):
         super().__init__()
 

@@ -1,13 +1,14 @@
+import re
 from PyQt6.QtGui import QGuiApplication, QRegularExpressionValidator
 from PyQt6.QtWidgets import QMainWindow, QMessageBox
 from PyQt6.QtCore import QRegularExpression
 
-from Presentation.adminWindow import AdminWindow
-from Presentation.UI.UiLoginWindow import Ui_Login
-from Presentation.signupWindow import SignupWindow
+from Presentation.Admin.adminWindow import AdminWindow
+from Presentation.UI.Common.UiLoginWindow import Ui_Login
+from Presentation.Common.signupWindow import SignupWindow
 from Domain.Enums.User.UserStatus import UserStatus
 from Domain.Entities.User.UserInfo import User
-import re
+from Presentation.User.userWindow import UserMainWindow  # Импортируем окно пользователя
 
 
 class LoginWindow(QMainWindow, Ui_Login):
@@ -74,11 +75,10 @@ class LoginWindow(QMainWindow, Ui_Login):
         self.passwordTextEdit.setStyleSheet("")
         if user.status == UserStatus.ADMIN:
             self.main_window = AdminWindow()
-            self.main_window.show()
-            self.close()
         else:
-            # Добавьте логику для обычного пользователя, если требуется
-            pass
+            self.main_window = UserMainWindow()  # Открываем окно пользователя
+        self.main_window.show()
+        self.close()
 
     def signup_button_clicked(self):
         self.main_window = SignupWindow()

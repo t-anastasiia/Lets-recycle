@@ -1,10 +1,12 @@
 import re
 import sqlite3
+import os
 from PyQt6.QtGui import QGuiApplication
 from PyQt6.QtWidgets import QMainWindow, QMessageBox
 
-from Presentation.UI.UiSingUpWindow import Ui_SingUpWindow
-from Domain.Entities.User.UserInfo import User
+from Presentation.UI.Common.UiSingUpWindow import Ui_SingUpWindow
+from Domain.Entities.User.UserInfo import User, get_db_path
+
 
 class SignupWindow(QMainWindow, Ui_SingUpWindow):
     def __init__(self):
@@ -21,6 +23,7 @@ class SignupWindow(QMainWindow, Ui_SingUpWindow):
         self.passwordTextEdit2.textChanged.connect(self.match_password)
 
         self.signupButton.clicked.connect(self.signup_button_clicked)
+        self.backButton.clicked.connect(self.back_button_clicked)
 
     def move_center(self):
         primary_screen = QGuiApplication.primaryScreen()
@@ -76,7 +79,15 @@ class SignupWindow(QMainWindow, Ui_SingUpWindow):
         user_password = self.passwordTextEdit1.text()
         user_name = self.nameTextEdit.text()
 
-        conn = sqlite3.connect('../Data/User/Users.db')
+        # Получаем путь к базе данных
+        db_path = get_db_path()
+
+        # Проверка наличия файла базы данных
+        if not os.path.exists(db_path):
+            QMessageBox.critical(self, "Database Error", "Database file not found.")
+            return
+
+        conn = sqlite3.connect(db_path)
         cursor = conn.cursor()
 
         # Проверка существования пользователя
@@ -86,10 +97,20 @@ class SignupWindow(QMainWindow, Ui_SingUpWindow):
             conn.close()
             return
 
-        # Вставка нового пользователя
-        cursor.execute("INSERT INTO users (email, password, status, name) VALUES (?, ?, 0, ?)", (user_email, user_password, user_name))
+        # Вставка нового пользователя с использованием класса User
+        new_user = User(None, user_email, user_password, 0, user_name)
+        new_user.save_to_db(cursor)
         conn.commit()
         conn.close()
 
         QMessageBox.information(self, "Signup Successful", "You have successfully signed up!")
+        self.show_login_window()
+
+    def show_login_window(self):
+        from Presentation.Common.loginWindow import LoginWindow
+        self.main_window = LoginWindow()
+        self.main_window.show()
         self.close()
+
+    def back_button_clicked(self):
+        self.show_login_window()

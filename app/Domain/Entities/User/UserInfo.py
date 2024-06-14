@@ -13,11 +13,7 @@ class User:
 
     @staticmethod
     def get_user_by_email(email, password):
-        # Убедитесь, что путь к базе данных правильный
-        db_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '../../../Data/User/Users.db'))
-        if not os.path.exists(db_path):
-            raise FileNotFoundError(f"Database file not found at {db_path}")
-
+        db_path = get_db_path()
         conn = sqlite3.connect(db_path)
         cursor = conn.cursor()
         cursor.execute("SELECT id, email, password, status, name FROM users WHERE email=? AND password=?",
@@ -29,3 +25,11 @@ class User:
             return User(user_id=user_data[0], email=user_data[1], password=user_data[2], status=user_data[3],
                         name=user_data[4])
         return None
+
+    def save_to_db(self, cursor):
+        cursor.execute("INSERT INTO users (email, password, status, name) VALUES (?, ?, ?, ?)",
+                       (self.email, self.password, 0, self.name))
+
+
+def get_db_path():
+    return os.path.abspath(os.path.join(os.path.dirname(__file__), '../../../Data/User/Users.db'))

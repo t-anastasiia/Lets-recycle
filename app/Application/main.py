@@ -1,12 +1,11 @@
-import sys
 from PyQt6.QtWidgets import QApplication
-from Presentation.loginWindow import LoginWindow
+from Presentation.Common.loginWindow import LoginWindow
 
 def main():
-    app = QApplication(sys.argv)
-    window = LoginWindow()
-    window.show()
-    sys.exit(app.exec())
+    app = QApplication([])
+    login_window = LoginWindow()
+    login_window.show()
+    app.exec()
 
 if __name__ == "__main__":
     main()

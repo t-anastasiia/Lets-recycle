@@ -1,10 +1,9 @@
 import re
-import sys
 import csv
 from PyQt6.QtGui import QGuiApplication
-from PyQt6.QtWidgets import QMainWindow, QApplication
+from PyQt6.QtWidgets import QMainWindow
 
-from UI.UiSingUpWindow import Ui_SingUpWindow
+from Presentation.UI.UiSingUpWindow import Ui_SingUpWindow
 
 
 class SingupWindow(QMainWindow, Ui_SingUpWindow):
@@ -79,7 +78,7 @@ class SingupWindow(QMainWindow, Ui_SingUpWindow):
             print("looser")
 
     def add_user(self):
-        with open('../dataBases/users_info.csv', newline='', encoding='utf-8-sig') as csvfile:
+        with open('../Data/users_info.csv', newline='', encoding='utf-8-sig') as csvfile:
             reader = csv.reader(csvfile, delimiter=';')
             user_exist = False
             lastrow = 0

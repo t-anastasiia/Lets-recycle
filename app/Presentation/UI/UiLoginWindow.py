@@ -17,7 +17,7 @@ class Ui_Login(object):
         self.buttonBox.setObjectName("buttonBox")
         self.logoBadge = QtWidgets.QLabel(parent=Login)
         self.logoBadge.setGeometry(QtCore.QRect(70, 40, 61, 51))
-        self.logoBadge.setStyleSheet("image: url(../images/logo.png);")
+        self.logoBadge.setStyleSheet("image: url(../Resources/logo.png);")
         self.logoBadge.setText("")
         self.logoBadge.setObjectName("logoBadge")
         self.namingLabel = QtWidgets.QLabel(parent=Login)

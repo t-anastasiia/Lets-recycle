@@ -12,7 +12,7 @@ class Ui_SingUpWindow(object):
         SingUp.setStyleSheet("background-color: rgb(24, 46, 17);")
         self.logoBadge = QtWidgets.QLabel(parent=SingUp)
         self.logoBadge.setGeometry(QtCore.QRect(70, 80, 61, 51))
-        self.logoBadge.setStyleSheet("image: url(../images/logo.png);")
+        self.logoBadge.setStyleSheet("image: url(../Resources/logo.png);")
         self.logoBadge.setText("")
         self.logoBadge.setObjectName("logoBadge")
         self.namingLabel = QtWidgets.QLabel(parent=SingUp)

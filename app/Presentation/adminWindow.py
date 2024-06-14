@@ -1,5 +1,5 @@
 from PyQt6.QtWidgets import QMainWindow
-from UI.UiAdminWindow import Ui_AdminWindow
+from Presentation.UI.UiAdminWindow import Ui_AdminWindow
 from PyQt6.QtGui import QGuiApplication
 
 class AdminWindow(QMainWindow, Ui_AdminWindow):

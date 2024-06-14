@@ -3,13 +3,13 @@ import csv
 from PyQt6.QtGui import QGuiApplication
 from PyQt6.QtWidgets import QMainWindow, QApplication
 
-from adminWindow import AdminWindow
-from UI.UiLoginWindow import Ui_Login
+from Presentation.adminWindow import AdminWindow
+from Presentation.UI.UiLoginWindow import Ui_Login
 from singupWindow import SingupWindow
 
 
 def valid_user(login, password):
-    with open('../dataBases/users_info.csv', newline='', encoding='utf-8-sig') as csvfile:
+    with open('../Data/users_info.csv', newline='', encoding='utf-8-sig') as csvfile:
         reader = csv.reader(csvfile, delimiter=';')
         if reader is not None:
             for row in reader:

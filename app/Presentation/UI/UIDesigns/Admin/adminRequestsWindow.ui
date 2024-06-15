@@ -429,80 +429,75 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QLabel" name="label">
+   <widget class="QTableWidget" name="tableWidget">
     <property name="geometry">
      <rect>
-      <x>260</x>
-      <y>140</y>
-      <width>231</width>
-      <height>71</height>
+      <x>170</x>
+      <y>80</y>
+      <width>421</width>
+      <height>441</height>
      </rect>
     </property>
     <property name="font">
      <font>
       <family>Papyrus</family>
-      <pointsize>28</pointsize>
      </font>
     </property>
-    <property name="text">
-     <string>Manage recycling</string>
-    </property>
+    <row/>
+    <row/>
+    <row/>
+    <row/>
+    <row/>
+    <row/>
+    <row/>
+    <row/>
+    <row/>
+    <row/>
+    <row/>
+    <row/>
+    <row/>
+    <row/>
+    <row/>
+    <row/>
+    <row/>
+    <column>
+     <property name="text">
+      <string>Email</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>Location</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>Phone</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>Done</string>
+     </property>
+    </column>
    </widget>
-   <widget class="QPushButton" name="locationButton">
+   <widget class="QPushButton" name="backButton">
     <property name="geometry">
      <rect>
-      <x>90</x>
-      <y>270</y>
-      <width>181</width>
+      <x>630</x>
+      <y>20</y>
+      <width>141</width>
       <height>41</height>
      </rect>
     </property>
     <property name="font">
      <font>
       <family>Papyrus</family>
-      <pointsize>16</pointsize>
+      <pointsize>18</pointsize>
      </font>
     </property>
     <property name="text">
-     <string>Add Location</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="requestsButton">
-    <property name="geometry">
-     <rect>
-      <x>290</x>
-      <y>270</y>
-      <width>181</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>Papyrus</family>
-      <pointsize>16</pointsize>
-     </font>
-    </property>
-    <property name="text">
-     <string>Requests</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="recyclingButton">
-    <property name="geometry">
-     <rect>
-      <x>490</x>
-      <y>270</y>
-      <width>201</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>Papyrus</family>
-      <pointsize>16</pointsize>
-     </font>
-    </property>
-    <property name="text">
-     <string>About recycling</string>
+     <string>Back</string>
     </property>
    </widget>
   </widget>

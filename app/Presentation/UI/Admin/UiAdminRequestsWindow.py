@@ -1,4 +1,4 @@
-# Form implementation generated from reading ui file 'userRequestWindow.ui'
+# Form implementation generated from reading ui file 'adminRequestsWindow.ui'
 #
 # Created by: PyQt6 UI code generator 6.7.0
 #
@@ -9,7 +9,7 @@
 from PyQt6 import QtCore, QtGui, QtWidgets
 
 
-class Ui_UserRequestWindow(object):
+class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(800, 600)
@@ -150,49 +150,31 @@ class Ui_UserRequestWindow(object):
         brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
         palette.setBrush(QtGui.QPalette.ColorGroup.Disabled, QtGui.QPalette.ColorRole.ToolTipText, brush)
         MainWindow.setPalette(palette)
-        font = QtGui.QFont()
-        font.setFamily("Papyrus")
-        MainWindow.setFont(font)
         self.centralwidget = QtWidgets.QWidget(parent=MainWindow)
         self.centralwidget.setObjectName("centralwidget")
-        self.label = QtWidgets.QLabel(parent=self.centralwidget)
-        self.label.setGeometry(QtCore.QRect(70, 50, 671, 71))
+        self.tableWidget = QtWidgets.QTableWidget(parent=self.centralwidget)
+        self.tableWidget.setGeometry(QtCore.QRect(170, 80, 421, 441))
         font = QtGui.QFont()
         font.setFamily("Papyrus")
-        font.setPointSize(50)
-        self.label.setFont(font)
-        self.label.setObjectName("label")
-        self.phoneTextEdit = QtWidgets.QTextEdit(parent=self.centralwidget)
-        self.phoneTextEdit.setGeometry(QtCore.QRect(220, 210, 341, 41))
+        self.tableWidget.setFont(font)
+        self.tableWidget.setObjectName("tableWidget")
+        self.tableWidget.setColumnCount(4)
+        self.tableWidget.setRowCount(17)
+        item = QtWidgets.QTableWidgetItem()
+        self.tableWidget.setHorizontalHeaderItem(0, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.tableWidget.setHorizontalHeaderItem(1, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.tableWidget.setHorizontalHeaderItem(2, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.tableWidget.setHorizontalHeaderItem(3, item)
+        self.backButton = QtWidgets.QPushButton(parent=self.centralwidget)
+        self.backButton.setGeometry(QtCore.QRect(630, 20, 141, 41))
         font = QtGui.QFont()
         font.setFamily("Papyrus")
-        self.phoneTextEdit.setFont(font)
-        self.phoneTextEdit.setObjectName("phoneTextEdit")
-        self.streetTextEdit = QtWidgets.QTextEdit(parent=self.centralwidget)
-        self.streetTextEdit.setGeometry(QtCore.QRect(220, 270, 341, 41))
-        font = QtGui.QFont()
-        font.setFamily("Papyrus")
-        self.streetTextEdit.setFont(font)
-        self.streetTextEdit.setObjectName("streetTextEdit")
-        self.homeTextEdit = QtWidgets.QTextEdit(parent=self.centralwidget)
-        self.homeTextEdit.setGeometry(QtCore.QRect(220, 330, 341, 41))
-        font = QtGui.QFont()
-        font.setFamily("Papyrus")
-        self.homeTextEdit.setFont(font)
-        self.homeTextEdit.setObjectName("homeTextEfit")
-        self.makeRequestButton = QtWidgets.QPushButton(parent=self.centralwidget)
-        self.makeRequestButton.setGeometry(QtCore.QRect(280, 390, 201, 51))
-        font = QtGui.QFont()
-        font.setFamily("Papyrus")
-        font.setPointSize(20)
-        self.makeRequestButton.setFont(font)
-        self.makeRequestButton.setObjectName("makeRequestButton")
-        self.citiComboBox = QtWidgets.QComboBox(parent=self.centralwidget)
-        self.citiComboBox.setGeometry(QtCore.QRect(220, 150, 341, 32))
-        self.citiComboBox.setObjectName("citiComboBox")
-        self.pushButton = QtWidgets.QPushButton(parent=self.centralwidget)
-        self.pushButton.setGeometry(QtCore.QRect(669, 1, 121, 41))
-        self.pushButton.setObjectName("pushButton")
+        font.setPointSize(18)
+        self.backButton.setFont(font)
+        self.backButton.setObjectName("backButton")
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(parent=MainWindow)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 800, 24))
@@ -208,32 +190,12 @@ class Ui_UserRequestWindow(object):
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
-        self.label.setText(_translate("MainWindow", "WE\'LL TAKE YOUR TRASH!!!"))
-        self.phoneTextEdit.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><meta charset=\"utf-8\" /><style type=\"text/css\">\n"
-"p, li { white-space: pre-wrap; }\n"
-"hr { height: 1px; border-width: 0; }\n"
-"li.unchecked::marker { content: \"\\2610\"; }\n"
-"li.checked::marker { content: \"\\2612\"; }\n"
-"</style></head><body style=\" font-family:\'Papyrus\'; font-size:13pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'MS Shell Dlg 2\'; font-size:12pt;\">Phone number</span></p>\n"
-"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:\'MS Shell Dlg 2\'; font-size:12pt;\"><br /></p></body></html>"))
-        self.streetTextEdit.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><meta charset=\"utf-8\" /><style type=\"text/css\">\n"
-"p, li { white-space: pre-wrap; }\n"
-"hr { height: 1px; border-width: 0; }\n"
-"li.unchecked::marker { content: \"\\2610\"; }\n"
-"li.checked::marker { content: \"\\2612\"; }\n"
-"</style></head><body style=\" font-family:\'Papyrus\'; font-size:13pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'MS Shell Dlg 2\'; font-size:12pt;\">Street</span></p>\n"
-"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:\'MS Shell Dlg 2\'; font-size:12pt;\"><br /></p></body></html>"))
-        self.homeTextEdit.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><meta charset=\"utf-8\" /><style type=\"text/css\">\n"
-"p, li { white-space: pre-wrap; }\n"
-"hr { height: 1px; border-width: 0; }\n"
-"li.unchecked::marker { content: \"\\2610\"; }\n"
-"li.checked::marker { content: \"\\2612\"; }\n"
-"</style></head><body style=\" font-family:\'Papyrus\'; font-size:13pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'MS Shell Dlg 2\'; font-size:12pt;\">House</span></p></body></html>"))
-        self.makeRequestButton.setText(_translate("MainWindow", "Make a request"))
-        self.pushButton.setText(_translate("MainWindow", "Back"))
+        item = self.tableWidget.horizontalHeaderItem(0)
+        item.setText(_translate("MainWindow", "Email"))
+        item = self.tableWidget.horizontalHeaderItem(1)
+        item.setText(_translate("MainWindow", "Location"))
+        item = self.tableWidget.horizontalHeaderItem(2)
+        item.setText(_translate("MainWindow", "Phone"))
+        item = self.tableWidget.horizontalHeaderItem(3)
+        item.setText(_translate("MainWindow", "Done"))
+        self.backButton.setText(_translate("MainWindow", "Back"))

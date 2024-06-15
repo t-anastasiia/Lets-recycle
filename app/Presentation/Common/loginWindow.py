@@ -76,7 +76,7 @@ class LoginWindow(QMainWindow, Ui_Login):
         if user.status == UserStatus.ADMIN:
             self.main_window = AdminWindow()
         else:
-            self.main_window = UserMainWindow()  # Открываем окно пользователя
+            self.main_window = UserMainWindow(self.loginTextEdit.text())  # Открываем окно пользователя
         self.main_window.show()
         self.close()
 

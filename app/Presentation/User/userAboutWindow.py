@@ -1,6 +1,8 @@
+import sqlite3
 from PyQt6 import QtWidgets
 from PyQt6.QtWidgets import QMainWindow
 from Presentation.UI.User.UiUserAboutWindow import Ui_MainWindow
+import os
 
 class UserAboutWindow(QMainWindow, Ui_MainWindow):
     def __init__(self):
@@ -16,21 +18,32 @@ class UserAboutWindow(QMainWindow, Ui_MainWindow):
         self.close()
 
     def populate_combobox(self):
-        # Populate the combobox with actual data
+        # Определяем абсолютный путь к базе данных
+        base_dir = os.path.dirname(os.path.abspath(__file__))
+        db_path = os.path.join(base_dir, '../../Data/Recycling/RecyclingInfo.db')
+
+        # Подключаемся к базе данных SQLite
+        self.conn = sqlite3.connect(db_path)
+        self.cursor = self.conn.cursor()
+
+        # Заполняем combobox категориями из базы данных
         self.comboBox.clear()
-        items = ["Recycling Plastic", "Recycling Paper", "Recycling Metal", "Recycling Glass", "Recycling Electronics"]
-        self.comboBox.addItems(items)
+        self.cursor.execute('SELECT DISTINCT category FROM RecyclingInfo')
+        categories = [row[0] for row in self.cursor.fetchall()]
+        self.comboBox.addItems(categories)
         self.comboBox.currentIndexChanged.connect(self.display_info)
 
     def display_info(self, index):
-        info = [
-            "Recycling plastic involves collecting used plastic items and processing them into new products. This helps reduce the environmental impact and saves resources.",
-            "Recycling paper is the process of converting waste paper into reusable paper products. This conserves trees and reduces landfill waste.",
-            "Recycling metal involves collecting and processing used metal items to produce new metal products. This helps conserve natural resources and reduces pollution.",
-            "Recycling glass involves collecting and melting down used glass items to create new glass products. This reduces the need for raw materials and decreases landfill waste.",
-            "Recycling electronics involves dismantling old electronic devices and repurposing the components. This reduces electronic waste and recovers valuable materials."
-        ]
-        self.TEXT.setPlainText(info[index])
+        category = self.comboBox.itemText(index)
+        self.cursor.execute('SELECT type, recyclable_locally, common_uses, description FROM RecyclingInfo WHERE category = ?', (category,))
+        records = self.cursor.fetchall()
+
+        info_text = ""
+        for record in records:
+            type_, recyclable_locally, common_uses, description = record
+            info_text += f"Type: {type_}\nIs recycling in our point: {recyclable_locally}\nAreas of application: {common_uses}\nDescription: {description}\n\n"
+
+        self.TEXT.setPlainText(info_text)
 
 if __name__ == "__main__":
     import sys

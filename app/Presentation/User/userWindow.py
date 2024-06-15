@@ -6,10 +6,12 @@ from Presentation.User.userLocationsWindow import UserLocationsWindow
 from Presentation.User.userRequestWindow import UserRequestWindow
 
 class UserMainWindow(QMainWindow, Ui_MainWindow):
-    def __init__(self):
+    def __init__(self, email):
         super().__init__()
         self.setupUi(self)
         self.initialize_ui()
+
+        self.email = email
 
     def initialize_ui(self):
         # Подключение действий к кнопкам, если необходимо
@@ -29,7 +31,7 @@ class UserMainWindow(QMainWindow, Ui_MainWindow):
         self.close()
 
     def show_requests(self):
-        self.request_window = UserRequestWindow()
+        self.request_window = UserRequestWindow(self.email)
         self.request_window.show()
         self.close()
 

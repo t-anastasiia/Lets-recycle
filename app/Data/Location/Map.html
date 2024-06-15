@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>OpenStreetMap</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <style>
+        #map { height: 100%; width: 100%; }
+    </style>
+</head>
+<body>
+    <div id="map"></div>
+    <script>
+        var map = L.map('map').setView([55.76, 37.64], 10); // Москва, центральные координаты и начальный уровень зума
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '© OpenStreetMap contributors'
+        }).addTo(map);
+    </script>
+</body>
+</html>

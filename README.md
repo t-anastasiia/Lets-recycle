@@ -60,8 +60,63 @@ Let's Recycle! — это оконное приложение, предоста�
 
 ## Скриншоты
 
-### Главное меню
-<img src="path_to_main_menu_screenshot" alt="Main Menu">
 
-### Окно запросов
-<img src="path_to_requests_window_screenshot" alt="Requests Window">
+### Регистрация и вход
+<table>
+  <tr>
+    <td>Админ</td>
+    <td>Пользователь</td>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/t-anastasiia/Lets-recycle/assets/121961781/ffa9120a-b9b8-4f4f-87fe-70158bfd9d0b" alt="SignUp Window"></td>
+    <td><img src="https://github.com/t-anastasiia/Lets-recycle/assets/121961781/253b7225-c267-4606-98bd-7eb4a191a2b8" alt="Login Window"></td>
+  </tr>
+</table>
+
+### Главное меню
+<table>
+  <tr>
+    <td>Регистрация</td>
+    <td>Вход</td>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/t-anastasiia/Lets-recycle/assets/121961781/b251ad51-d686-4a53-8407-94250f0289f4" alt="Admin Main Menu"></td>
+    <td><img src="https://github.com/t-anastasiia/Lets-recycle/assets/121961781/5f6d9ef9-bcc1-4897-b564-3830045bad6e" alt="User Main Menu"></td>
+  </tr>
+</table>
+
+### Карта пунктов переработки
+<table>
+  <tr>
+    <td>Админ</td>
+    <td>Пользователь</td>
+  </tr>
+  <tr>
+    <td><img src="path_to_admin_recycling_points_map_screenshot" alt="Admin Recycling Points Map"></td>
+    <td><img src="path_to_user_recycling_points_map_screenshot" alt="User Recycling Points Map"></td>
+  </tr>
+</table>
+
+### Вызов эко-такси
+<table>
+  <tr>
+    <td>Админ</td>
+    <td>Пользователь</td>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/t-anastasiia/Lets-recycle/assets/121961781/bea34d58-fc03-4da3-ad88-5583893d4f8e" alt="Admin Eco-Taxi Request"></td>
+    <td><img src="https://github.com/t-anastasiia/Lets-recycle/assets/121961781/0fca95fa-366c-40d3-93b6-d2dbb24dff67" alt="User Eco-Taxi Request"></td>
+  </tr>
+</table>
+
+### Информация о переработке
+<table>
+  <tr>
+    <td>Админ</td>
+    <td>Пользователь</td>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/t-anastasiia/Lets-recycle/assets/121961781/b34fac2a-86d7-4b41-9b61-75b48a3ccf29" alt="Admin Recycling Information"></td>
+    <td><img src="https://github.com/t-anastasiia/Lets-recycle/assets/121961781/b6b6f897-8313-41e4-9ea9-9ef80553e384" alt="User Recycling Information"></td>
+  </tr>
+</table>

@@ -32,4 +32,4 @@ class User:
 
 
 def get_db_path():
-    return os.path.abspath(os.path.join(os.path.dirname(__file__), '../../../Data/User/Users.db'))
+    return os.path.abspath(os.path.join(os.path.dirname(__file__), '../../Data/User/Users.db'))

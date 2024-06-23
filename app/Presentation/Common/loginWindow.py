@@ -7,7 +7,7 @@ from Presentation.Admin.adminWindow import AdminWindow
 from Presentation.UI.Common.UiLoginWindow import Ui_Login
 from Presentation.Common.signupWindow import SignupWindow
 from Domain.Enums.User.UserStatus import UserStatus
-from Domain.Entities.User.UserInfo import User
+from Domain.Entities.UserModel import User
 from Presentation.User.userWindow import UserMainWindow
 
 

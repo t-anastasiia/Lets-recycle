@@ -1,6 +1,5 @@
 from PyQt6 import QtCore, QtGui, QtWidgets
 
-
 class Ui_UserRequestWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
@@ -154,24 +153,41 @@ class Ui_UserRequestWindow(object):
         font.setPointSize(50)
         self.label.setFont(font)
         self.label.setObjectName("label")
+        self.phoneLineEdit = QtWidgets.QLineEdit(parent=self.centralwidget)
+        self.phoneLineEdit.setGeometry(QtCore.QRect(220, 210, 341, 41))
+        font = QtGui.QFont()
+        font.setFamily("Papyrus")
+
         self.phoneTextEdit = QtWidgets.QTextEdit(parent=self.centralwidget)
         self.phoneTextEdit.setGeometry(QtCore.QRect(220, 210, 341, 41))
         font = QtGui.QFont()
         font.setFamily("Papyrus")
-        self.phoneTextEdit.setFont(font)
-        self.phoneTextEdit.setObjectName("phoneTextEdit")
-        self.streetTextEdit = QtWidgets.QTextEdit(parent=self.centralwidget)
-        self.streetTextEdit.setGeometry(QtCore.QRect(220, 270, 341, 41))
+
+        self.phoneLineEdit = QtWidgets.QLineEdit(parent=self.centralwidget)
+        self.phoneLineEdit.setGeometry(QtCore.QRect(220, 210, 341, 41))
         font = QtGui.QFont()
         font.setFamily("Papyrus")
-        self.streetTextEdit.setFont(font)
-        self.streetTextEdit.setObjectName("streetTextEdit")
-        self.homeTextEdit = QtWidgets.QTextEdit(parent=self.centralwidget)
-        self.homeTextEdit.setGeometry(QtCore.QRect(220, 330, 341, 41))
+        self.phoneLineEdit.setFont(font)
+        self.phoneLineEdit.setObjectName("phoneLineEdit")
+        self.phoneLineEdit.setPlaceholderText("Phone number")
+        self.phoneLineEdit.setInputMask("+7 (999) 000-00-00;_")
+
+        self.streetLineEdit = QtWidgets.QLineEdit(parent=self.centralwidget)
+        self.streetLineEdit.setGeometry(QtCore.QRect(220, 270, 341, 41))
         font = QtGui.QFont()
         font.setFamily("Papyrus")
-        self.homeTextEdit.setFont(font)
-        self.homeTextEdit.setObjectName("homeTextEfit")
+        self.streetLineEdit.setFont(font)
+        self.streetLineEdit.setObjectName("streetLineEdit")
+        self.streetLineEdit.setPlaceholderText("Street")
+
+        self.homeLineEdit = QtWidgets.QLineEdit(parent=self.centralwidget)
+        self.homeLineEdit.setGeometry(QtCore.QRect(220, 330, 341, 41))
+        font = QtGui.QFont()
+        font.setFamily("Papyrus")
+        self.homeLineEdit.setFont(font)
+        self.homeLineEdit.setObjectName("homeLineEdit")
+        self.homeLineEdit.setPlaceholderText("House")
+
         self.makeRequestButton = QtWidgets.QPushButton(parent=self.centralwidget)
         self.makeRequestButton.setGeometry(QtCore.QRect(280, 390, 201, 51))
         font = QtGui.QFont()
@@ -200,32 +216,16 @@ class Ui_UserRequestWindow(object):
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
-        self.label.setText(_translate("MainWindow", "WE\'LL TAKE YOUR TRASH!!!"))
-        self.phoneTextEdit.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><meta charset=\"utf-8\" /><style type=\"text/css\">\n"
-"p, li { white-space: pre-wrap; }\n"
-"hr { height: 1px; border-width: 0; }\n"
-"li.unchecked::marker { content: \"\\2610\"; }\n"
-"li.checked::marker { content: \"\\2612\"; }\n"
-"</style></head><body style=\" font-family:\'Papyrus\'; font-size:13pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'MS Shell Dlg 2\'; font-size:12pt;\">Phone number</span></p>\n"
-"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:\'MS Shell Dlg 2\'; font-size:12pt;\"><br /></p></body></html>"))
-        self.streetTextEdit.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><meta charset=\"utf-8\" /><style type=\"text/css\">\n"
-"p, li { white-space: pre-wrap; }\n"
-"hr { height: 1px; border-width: 0; }\n"
-"li.unchecked::marker { content: \"\\2610\"; }\n"
-"li.checked::marker { content: \"\\2612\"; }\n"
-"</style></head><body style=\" font-family:\'Papyrus\'; font-size:13pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'MS Shell Dlg 2\'; font-size:12pt;\">Street</span></p>\n"
-"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:\'MS Shell Dlg 2\'; font-size:12pt;\"><br /></p></body></html>"))
-        self.homeTextEdit.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><meta charset=\"utf-8\" /><style type=\"text/css\">\n"
-"p, li { white-space: pre-wrap; }\n"
-"hr { height: 1px; border-width: 0; }\n"
-"li.unchecked::marker { content: \"\\2610\"; }\n"
-"li.checked::marker { content: \"\\2612\"; }\n"
-"</style></head><body style=\" font-family:\'Papyrus\'; font-size:13pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'MS Shell Dlg 2\'; font-size:12pt;\">House</span></p></body></html>"))
+        self.label.setText(_translate("MainWindow", "WE'LL TAKE YOUR TRASH!!!"))
         self.makeRequestButton.setText(_translate("MainWindow", "Make a request"))
         self.pushButton.setText(_translate("MainWindow", "Back"))
+
+        self.phoneLineEdit.setPlaceholderText(_translate("MainWindow", "Phone number"))
+        self.phoneLineEdit.setStyleSheet("QLineEdit:placeholder { color: green; }")
+
+        self.streetLineEdit.setPlaceholderText(_translate("MainWindow", "Street"))
+        self.streetLineEdit.setStyleSheet("QLineEdit:placeholder { color: green; }")
+
+        self.homeLineEdit.setPlaceholderText(_translate("MainWindow", "House"))
+        self.homeLineEdit.setStyleSheet("QLineEdit:placeholder { color: green; }")
+

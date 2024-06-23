@@ -18,12 +18,12 @@ class UserMainWindow(QMainWindow, Ui_MainWindow):
         self.RequestsButton.clicked.connect(self.show_requests)
 
     def about_recycling(self):
-        self.about_window = UserAboutWindow()
+        self.about_window = UserAboutWindow(self.email)
         self.about_window.show()
         self.close()
 
     def show_locations(self):
-        self.locations_window = UserLocationsWindow()
+        self.locations_window = UserLocationsWindow(self.email)
         self.locations_window.show()
         self.close()
 

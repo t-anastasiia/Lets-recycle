@@ -5,7 +5,7 @@ from PyQt6.QtGui import QGuiApplication
 from PyQt6.QtWidgets import QMainWindow, QMessageBox
 
 from Presentation.UI.Common.UiSingUpWindow import Ui_SingUpWindow
-from Domain.Entities.User.UserInfo import User, get_db_path
+from Domain.Entities.UserModel import User, get_db_path
 
 
 class SignupWindow(QMainWindow, Ui_SingUpWindow):

@@ -4,15 +4,17 @@ from Presentation.UI.User.UiUserAboutWindow import Ui_MainWindow
 import os
 
 class UserAboutWindow(QMainWindow, Ui_MainWindow):
-    def __init__(self):
+    def __init__(self, email):
         super().__init__()
         self.setupUi(self)
         self.BACK_BUTTON.clicked.connect(self.back_button_clicked)
         self.populate_combobox()
 
+        self.email = email
+
     def back_button_clicked(self):
         from Presentation.User.userWindow import UserMainWindow
-        self.login_window = UserMainWindow()
+        self.login_window = UserMainWindow(self.email)
         self.login_window.show()
         self.close()
 

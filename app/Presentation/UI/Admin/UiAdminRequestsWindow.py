@@ -191,3 +191,4 @@ class Ui_MainWindow(object):
         item = self.tableWidget.horizontalHeaderItem(3)
         item.setText(_translate("MainWindow", "Done"))
         self.backButton.setText(_translate("MainWindow", "Back"))
+

@@ -1,5 +1,4 @@
-import sys
-from PyQt6.QtWidgets import QApplication, QMainWindow
+from PyQt6.QtWidgets import QMainWindow
 from PyQt6.QtGui import QGuiApplication
 from Presentation.UI.Admin.UiAdminMainWindow import Ui_AdminWindow
 from Presentation.Admin.adminRequestsWindow import AdminRequestsWindow

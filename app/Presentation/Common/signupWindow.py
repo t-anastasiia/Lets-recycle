@@ -79,10 +79,8 @@ class SignupWindow(QMainWindow, Ui_SingUpWindow):
         user_password = self.passwordTextEdit1.text()
         user_name = self.nameTextEdit.text()
 
-        # Получаем путь к базе данных
         db_path = get_db_path()
 
-        # Проверка наличия файла базы данных
         if not os.path.exists(db_path):
             QMessageBox.critical(self, "Database Error", "Database file not found.")
             return
@@ -90,14 +88,12 @@ class SignupWindow(QMainWindow, Ui_SingUpWindow):
         conn = sqlite3.connect(db_path)
         cursor = conn.cursor()
 
-        # Проверка существования пользователя
         cursor.execute("SELECT * FROM users WHERE email=?", (user_email,))
         if cursor.fetchone():
             QMessageBox.warning(self, "Signup Failed", "User with this email already exists.")
             conn.close()
             return
 
-        # Вставка нового пользователя с использованием класса User
         new_user = User(None, user_email, user_password, 0, user_name)
         new_user.save_to_db(cursor)
         conn.commit()

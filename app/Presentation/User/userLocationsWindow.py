@@ -1,6 +1,4 @@
-import sys
 from PyQt6 import QtWidgets
-from PyQt6.QtWebEngineWidgets import QWebEngineView
 from PyQt6.QtCore import QUrl
 from Presentation.UI.User.UiUserLocationsWindow import Ui_UserLocationsWindow
 import os
@@ -21,9 +19,3 @@ class UserLocationsWindow(QtWidgets.QMainWindow, Ui_UserLocationsWindow):
         self.login_window = UserMainWindow()
         self.login_window.show()
         self.close()
-
-if __name__ == "__main__":
-    app = QtWidgets.QApplication(sys.argv)
-    mainWindow = UserLocationsWindow()
-    mainWindow.show()
-    sys.exit(app.exec())

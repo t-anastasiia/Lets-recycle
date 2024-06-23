@@ -91,13 +91,3 @@ class Ui_Login(object):
         self.passwordTextEdit.setPlaceholderText(_translate("Login", "password"))
         self.loginButton.setText(_translate("Login", "Login"))
         self.signupButton.setText(_translate("Login", "Sign up"))
-
-
-if __name__ == "__main__":
-    import sys
-    app = QtWidgets.QApplication(sys.argv)
-    Login = QtWidgets.QDialog()
-    ui = Ui_Login()
-    ui.setupUi(Login)
-    Login.show()
-    sys.exit(app.exec())

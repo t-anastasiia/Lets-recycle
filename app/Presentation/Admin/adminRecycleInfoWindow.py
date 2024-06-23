@@ -1,5 +1,5 @@
 import os
-from PyQt6 import QtWidgets, QtCore
+from PyQt6 import QtWidgets
 from Presentation.UI.Admin.UiAdminRecycleInfoWindow import Ui_MainWindow
 import sqlite3
 
@@ -13,10 +13,8 @@ class AdminRecycleInfoWindow(QtWidgets.QMainWindow, Ui_MainWindow):
 
         self.load_data()
 
-        # Сигнал для обработки изменения ячеек
         self.marksTable.itemChanged.connect(self.on_item_changed)
 
-        # Хранить измененные данные
         self.modified_data = {}
 
     def on_back_button_clicked(self):
@@ -26,7 +24,6 @@ class AdminRecycleInfoWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.close()
 
     def load_data(self):
-        # Определите абсолютный путь к базе данных
         db_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '../../Data/Recycling/RecyclingInfo.db'))
         connection = sqlite3.connect(db_path)
         query = "SELECT * FROM RecyclingInfo"
@@ -46,18 +43,15 @@ class AdminRecycleInfoWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         connection.close()
 
     def on_item_changed(self, item):
-        # Получить измененные данные
         row = item.row()
         column = item.column()
         value = item.text()
         column_name = self.marksTable.horizontalHeaderItem(column).text()
 
-        # Сохранить измененные данные
         if row not in self.modified_data:
             self.modified_data[row] = {}
         self.modified_data[row][column_name] = value
 
-        # Обновить базу данных
         self.update_database(row, column_name, value)
 
     def update_database(self, row, column_name, value):
@@ -65,8 +59,7 @@ class AdminRecycleInfoWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         connection = sqlite3.connect(db_path)
         cursor = connection.cursor()
 
-        # Получить id записи для обновления
-        record_id = self.marksTable.item(row, 0).text()  # Предполагается, что первый столбец - id
+        record_id = self.marksTable.item(row, 0).text()
 
         query = f"UPDATE RecyclingInfo SET {column_name} = ? WHERE id = ?"
         cursor.execute(query, (value, record_id))

@@ -64,8 +64,8 @@ Let's Recycle! — это оконное приложение, предоста�
 ### Регистрация и вход
 <table>
   <tr>
-    <td>Админ</td>
-    <td>Пользователь</td>
+    <td>Регистрация</td>
+    <td>Вход</td>
   </tr>
   <tr>
     <td><img src="https://github.com/t-anastasiia/Lets-recycle/assets/121961781/ffa9120a-b9b8-4f4f-87fe-70158bfd9d0b" alt="SignUp Window"></td>
@@ -76,8 +76,8 @@ Let's Recycle! — это оконное приложение, предоста�
 ### Главное меню
 <table>
   <tr>
-    <td>Регистрация</td>
-    <td>Вход</td>
+    <td>Админ</td>
+    <td>Пользователь</td>
   </tr>
   <tr>
     <td><img src="https://github.com/t-anastasiia/Lets-recycle/assets/121961781/b251ad51-d686-4a53-8407-94250f0289f4" alt="Admin Main Menu"></td>
